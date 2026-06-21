@@ -1,89 +1,181 @@
-# Wayground-Style Online Quiz System
+# Online Quiz System
 
-Full-stack implementation based on the uploaded PDF requirements and styled after the public Wayground user journey: plum hero sections, compact navigation, pink CTAs, resource cards, clean auth screens, join-code flow, teacher dashboard, live sessions, leaderboards, reports, and admin monitoring.
+## Overview
 
-## Stack
+The Online Quiz System is a web-based assessment platform inspired by modern educational quiz applications such as Quizizz (Wayground). The system allows teachers to create quizzes, manage classes, assign assessments, track student performance, and generate reports. Students can participate in quizzes, submit responses, and view their results in real time.
 
-- Frontend: Nuxt 3, Vue 3, TypeScript
-- Backend: Node.js, Express, TypeScript
-- Databases: PostgreSQL for structured platform data, MongoDB for quiz/activity content, Redis for session leaderboards
-- Infrastructure: Docker Compose for local PostgreSQL, MongoDB, and Redis
+## Features
 
-## Run Locally
+### Administrator
 
-1. Install Node.js 20+ and Docker.
-2. Copy environment values:
+* Dashboard with analytics and statistics
+* User management
+* Class management
+* Quiz management
+* System settings
+* Reports and performance monitoring
 
-```bash
-cp .env.example .env
-cp .env.example backend/.env
-cp .env.example frontend/.env
+### Teacher
+
+* Create and manage quizzes
+* Create and manage classes
+* Assign quizzes to students
+* Monitor student progress
+* View reports and analytics
+
+### Student
+
+* Join assigned quizzes
+* Submit quiz responses
+* View quiz results
+* Track performance history
+
+## Technology Stack
+
+### Frontend
+
+* Vue.js
+* Nuxt.js
+* TypeScript
+
+### Backend
+
+* Node.js
+* Express.js
+* TypeScript
+
+### Database
+
+* PostgreSQL
+
+### Authentication
+
+* JWT (JSON Web Token)
+
+### Version Control
+
+* Git
+* GitHub
+
+## Project Structure
+
+```text
+Online_Quiz/
+├── backend/
+├── frontend/
+├── database/
+│   └── schema.sql
+├── README.md
+├── package.json
+├── package-lock.json
+└── .gitignore
 ```
 
-3. Start databases:
+## Prerequisites
 
-```bash
-docker compose up -d
+Before running the project, install:
+
+* Node.js (v18 or later)
+* npm
+* PostgreSQL (v16 recommended)
+* Git
+
+
 ```
 
-4. Install dependencies:
+## Backend Setup
+
+Navigate to the backend folder:
+
+```bash
+cd backend
+```
+
+Install dependencies:
 
 ```bash
 npm install
-npm run install:all
 ```
 
-5. Seed sample data:
-
-```bash
-npm run seed
-```
-
-6. Run the app:
+Run the backend:
 
 ```bash
 npm run dev
 ```
 
-Frontend: `http://localhost:3000`
+Backend API:
 
-Backend API: `http://localhost:4000/api/v1`
+```text
+http://localhost:4000
+```
 
-## Demo Accounts
+## Frontend Setup
 
-- Teacher: `teacher@wayground.local` / `Password123!`
-- Student: `student@wayground.local` / `Password123!`
-- Admin: `admin@wayground.local` / `Password123!`
+Navigate to the frontend folder:
 
-## Core API
+```bash
+cd frontend
+```
 
-- `POST /api/v1/auth/signup`
-- `POST /api/v1/auth/login`
-- `GET /api/v1/auth/me`
-- `GET /api/v1/resources`
-- `POST /api/v1/resources`
-- `GET /api/v1/resources/:quizId`
-- `PUT /api/v1/resources/:quizId`
-- `DELETE /api/v1/resources/:quizId`
-- `POST /api/v1/sessions`
-- `POST /api/v1/sessions/join`
-- `GET /api/v1/sessions/:sessionId`
-- `POST /api/v1/sessions/:sessionId/responses`
-- `GET /api/v1/sessions/:sessionId/leaderboard`
-- `GET /api/v1/results/:participantId`
-- `GET /api/v1/reports/:reportId`
-- `GET /api/v1/admin/overview`
+Install dependencies:
 
-## PDF Scope Mapping
+```bash
+npm install
+```
 
-- User Management: auth, JWT session, role-based route behavior
-- Quiz Management: create, list, edit, delete activity resources
-- Question Bank: questions and answer options stored in MongoDB
-- Live Quiz Management: host sessions, generate PIN, join participants
-- Assignment Management: self-paced mode supported through session mode
-- Quiz Participation: join code, answer submission, feedback
-- Evaluation Engine: correctness and score calculation
-- Leaderboard Management: Redis sorted leaderboard
-- Result Management: participant result endpoint
-- Reporting and Analytics: generated reports with average score and completion rate
-- Admin: platform overview for users, resources, sessions, reports, integrations, plans
+Configure frontend environment:
+
+```env
+NUXT_PUBLIC_API_BASE=http://localhost:4000/api/v1
+```
+
+Run the frontend:
+
+```bash
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:3000
+```
+
+
+## API Modules
+
+### Authentication
+
+* Login
+* Register
+* JWT Authentication
+
+### Admin Module
+
+* Dashboard
+* User Management
+* Analytics
+* Reports
+* Settings
+
+### Teacher Module
+
+* Quiz Management
+* Class Management
+* Assignments
+
+### Student Module
+
+* Quiz Participation
+* Results
+* Performance Tracking
+
+## Future Enhancements
+
+* Live quiz sessions
+* Leaderboards
+* AI-generated questions
+* Advanced analytics
+* Email notifications
+* Multi-language support
+
